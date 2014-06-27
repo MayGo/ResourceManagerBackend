@@ -1,7 +1,7 @@
 package extjstest
 
 import grails.rest.*
-@Resource(uri='/divisions', formats=['json', 'xml'])
+
 class Division {
 
 	String name
@@ -40,7 +40,14 @@ class Division {
 		idTrail=calcIdTrail()
 		nameTrail=calcNameTrail()
 	}
+	static namedQueries = {
+		searchQuery { query ->
+			if(query){
+			 ilike 'name', query + '%'
+			}
+		}
 
+	}
 	String toString() {
 		"$name"
 	}
