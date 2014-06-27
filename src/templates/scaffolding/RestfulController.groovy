@@ -2,6 +2,7 @@
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.JSON
 
 @Transactional(readOnly = true)
 class ${className}Controller {
@@ -11,7 +12,11 @@ class ${className}Controller {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ${className}.list(params), [status: OK]
+		def results = ${className}.list(params)
+		def totalResults = ${className}.count()
+		
+		def listObject = [list: results, total: totalResults]
+		respond listObject as Object, [status: OK]
     }
 
     @Transactional
