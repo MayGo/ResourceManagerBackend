@@ -1,7 +1,7 @@
 package extjstest
 
 import grails.rest.*
-@Resource(uri='/workers', formats=['json', 'xml'])
+@Resource(uri = '/workers', formats = ['json'], superClass = CustomRestfulController)
 class Worker {
 	String name
 	String idCode
@@ -19,6 +19,13 @@ class Worker {
 		Laborforce.findAllByAsset(this, [sort:"name"])
 	}
 	
+	static namedQueries = {
+		searchQuery { query ->
+			if(query){
+				ilike 'name', query + '%'
+			}
+		}
+	}
 	String toString() {
 		"Worker $name $idCode"
 	}

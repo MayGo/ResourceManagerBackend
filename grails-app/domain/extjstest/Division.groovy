@@ -2,6 +2,7 @@ package extjstest
 
 import grails.rest.*
 
+@Resource(uri = '/divisions', formats = ['json'], superClass = CustomRestfulController)
 class Division {
 
 	String name

@@ -2,7 +2,7 @@ package extjstest
 
 
 import grails.rest.*
-@Resource(uri='/laborforces', formats=['json', 'xml'])
+@Resource(uri = '/laborforces', formats = ['json'], superClass = CustomRestfulController)
 class Laborforce {
 
     Worker worker
@@ -20,7 +20,15 @@ class Laborforce {
 		asset nullable:false
 		division nullable:false
     }
-
+	static namedQueries = {
+		searchQuery { query ->
+			if(query){
+				worker{
+					ilike 'name', query + '%'
+				}
+			}
+		}
+	}
     String toString() {
         "$worker $validFrom-$validTo $asset"
     }
