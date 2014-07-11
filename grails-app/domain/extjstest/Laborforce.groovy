@@ -2,7 +2,7 @@ package extjstest
 
 
 import grails.rest.*
-@Resource(uri = '/laborforces', formats = ['json'], superClass = CustomRestfulController)
+@Resource(uri = '/laborforces', formats = ['json'], superClass = extjsScaffoldingPlugin.CustomRestfulController)
 class Laborforce {
 
     Worker worker

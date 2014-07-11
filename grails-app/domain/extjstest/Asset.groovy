@@ -2,7 +2,7 @@ package extjstest
 
 
 import grails.rest.*
-@Resource(uri = '/assets', formats = ['json'], superClass = CustomRestfulController)
+@Resource(uri = '/assets', formats = ['json'], superClass = extjsScaffoldingPlugin.CustomRestfulController)
 class Asset {
 
     String name

@@ -121,3 +121,4 @@ log4j = {
 }
 
 cors.headers = ['Access-Control-Allow-Origin': '*']
+extJsExportLocation = "web-app/"
