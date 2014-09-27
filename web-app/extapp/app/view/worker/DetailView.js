@@ -18,6 +18,7 @@ Ext.define('ResourceManager.view.worker.DetailView', {
     items: [{
         xtype: 'base-form',
         reference: 'baseform',
+        modelValidation: true,
         defaults: {
             anchor: '95%',
             maxWidth: 400
@@ -25,7 +26,11 @@ Ext.define('ResourceManager.view.worker.DetailView', {
         items: [		
 			{
 	            fieldLabel: 'Id Code',
-	            name:'idCode',    
+	           // name:'idCode', 
+	            
+                 bind: '{theDomainObject.idCode}',
+         
+
 				
 			xtype : 'textfield'
 		
@@ -35,7 +40,11 @@ Ext.define('ResourceManager.view.worker.DetailView', {
 		
 			{
 	            fieldLabel: 'Name',
-	            name:'name',    
+	           // name:'name', 
+	            
+                 bind: '{theDomainObject.name}',
+         
+
 				
 			xtype : 'textfield'
 		
@@ -45,9 +54,13 @@ Ext.define('ResourceManager.view.worker.DetailView', {
 		
 			{
 	            fieldLabel: 'Division',
-	            name:'division',    
+	           // name:'division', 
+	            
+                 bind: '{theDomainObject.division}',
+         
+
 				
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'division-liststore'},

@@ -18,6 +18,7 @@ Ext.define('ResourceManager.view.laborforce.DetailView', {
     items: [{
         xtype: 'base-form',
         reference: 'baseform',
+        modelValidation: true,
         defaults: {
             anchor: '95%',
             maxWidth: 400
@@ -25,7 +26,11 @@ Ext.define('ResourceManager.view.laborforce.DetailView', {
         items: [		
 			{
 	            fieldLabel: 'Valid From',
-	            name:'validFrom',    
+	           // name:'validFrom', 
+	            
+                 bind: '{theDomainObject.validFrom}',
+         
+
 				 	
 				xtype : 'datefield',
 		 		format: 'Y-m-d',
@@ -36,7 +41,11 @@ Ext.define('ResourceManager.view.laborforce.DetailView', {
 		
 			{
 	            fieldLabel: 'Valid To',
-	            name:'validTo',    
+	           // name:'validTo', 
+	            
+                 bind: '{theDomainObject.validTo}',
+         
+
 				 	
 				xtype : 'datefield',
 		 		format: 'Y-m-d',
@@ -47,9 +56,13 @@ Ext.define('ResourceManager.view.laborforce.DetailView', {
 		
 			{
 	            fieldLabel: 'Asset',
-	            name:'asset',    
+	           // name:'asset', 
+	            
+                 bind: '{theDomainObject.asset}',
+         
+
 				
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'asset-liststore'},
@@ -60,9 +73,13 @@ Ext.define('ResourceManager.view.laborforce.DetailView', {
 		
 			{
 	            fieldLabel: 'Division',
-	            name:'division',    
+	           // name:'division', 
+	            
+                 bind: '{theDomainObject.division}',
+         
+
 				
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'division-liststore'},
@@ -73,9 +90,13 @@ Ext.define('ResourceManager.view.laborforce.DetailView', {
 		
 			{
 	            fieldLabel: 'Worker',
-	            name:'worker',    
+	           // name:'worker', 
+	            
+                 bind: '{theDomainObject.worker}',
+         
+
 				
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'worker-liststore'},

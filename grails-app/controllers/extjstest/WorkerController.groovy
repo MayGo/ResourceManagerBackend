@@ -1,68 +1,26 @@
 package extjstest
 
 
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.rest.RestfulController
+
 
 @Transactional(readOnly = true)
-class WorkerController {
+class WorkerController extends RestfulController{
 
-    static responseFormats = ['json', 'xml']
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-		def results = Worker.list(params)
-		def totalResults = Worker.count()
+    static responseFormats = ['json']
+	
+	WorkerController() {
+		super(Worker, false /* read-only */)
+	}
+	
+	def index(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
 		
-		def listObject = [list: results, total: totalResults]
-		respond listObject as Object, [status: OK]
-    }
-
-    @Transactional
-    def save(Worker workerInstance) {
-        if (workerInstance == null) {
-            render status: NOT_FOUND
-            return
-        }
-
-        workerInstance.validate()
-        if (workerInstance.hasErrors()) {
-            render status: NOT_ACCEPTABLE
-            return
-        }
-
-        workerInstance.save flush:true
-        respond workerInstance, [status: CREATED]
-    }
-
-    @Transactional
-    def update(Worker workerInstance) {
-        if (workerInstance == null) {
-            render status: NOT_FOUND
-            return
-        }
-
-        workerInstance.validate()
-        if (workerInstance.hasErrors()) {
-            render status: NOT_ACCEPTABLE
-            return
-        }
-
-        workerInstance.save flush:true
-        respond workerInstance, [status: OK]
-    }
-
-    @Transactional
-    def delete(Worker workerInstance) {
-
-        if (workerInstance == null) {
-            render status: NOT_FOUND
-            return
-        }
-
-        workerInstance.delete flush:true
-        render status: NO_CONTENT
-    }
+		// Parses params.query for dynamic search and uses params.offset/params.max for paging. Returns [list: results, total: results.totalCount] for paging grid.
+		// This is here so running demo works right away. Should be replaced with own service, eg: workerService.list(params)
+		def listObject = grails.plugin.extjsscaffolding.ExtjsScaffoldingService.parseParamsAndRetrieveListAndCount(resource, params)
+		respond listObject as Object
+	}
 }

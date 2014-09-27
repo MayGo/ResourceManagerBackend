@@ -6,7 +6,23 @@ Ext.define('ResourceManager.view.asset.DetailModel', {
 
     alias: 'viewmodel.asset-detailviewmodel',
     data:{
-		isReadOnly:true,
-		dataHasChanged:false
-	}
+		isReadOnly:true
+	},
+    formulas:{
+        status:{
+            bind:{
+                bindTo:'{theDomainObject}',
+                deep:true
+            },
+            get: function(domainObj){
+                var ret = {
+                        dirty:domainObj ? domainObj.dirty : false,
+                        valid:domainObj && domainObj.isModel ? domainObj.isValid():false 
+                };
+                ret.dirtyAndValid = ret.dirty && ret.valid;
+                return ret
+            }
+        }
+    }
+
 });

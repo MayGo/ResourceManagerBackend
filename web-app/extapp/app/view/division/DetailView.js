@@ -18,6 +18,7 @@ Ext.define('ResourceManager.view.division.DetailView', {
     items: [{
         xtype: 'base-form',
         reference: 'baseform',
+        modelValidation: true,
         defaults: {
             anchor: '95%',
             maxWidth: 400
@@ -25,7 +26,11 @@ Ext.define('ResourceManager.view.division.DetailView', {
         items: [		
 			{
 	            fieldLabel: 'Id Trail',
-	            name:'idTrail',    
+	           // name:'idTrail', 
+	            
+                 bind: '{theDomainObject.idTrail}',
+         
+
 				
 			xtype : 'textfield'
 		
@@ -35,7 +40,11 @@ Ext.define('ResourceManager.view.division.DetailView', {
 		
 			{
 	            fieldLabel: 'Name',
-	            name:'name',    
+	           // name:'name', 
+	            
+                 bind: '{theDomainObject.name}',
+         
+
 				
 			xtype : 'textfield'
 		
@@ -45,7 +54,11 @@ Ext.define('ResourceManager.view.division.DetailView', {
 		
 			{
 	            fieldLabel: 'Name Trail',
-	            name:'nameTrail',    
+	           // name:'nameTrail', 
+	            
+                 bind: '{theDomainObject.nameTrail}',
+         
+
 				
 			xtype : 'textfield'
 		
@@ -55,9 +68,13 @@ Ext.define('ResourceManager.view.division.DetailView', {
 		
 			{
 	            fieldLabel: 'Head Division',
-	            name:'headDivision',    
+	           // name:'headDivision', 
+	            
+                 bind: '{theDomainObject.headDivision}',
+         
+
 				
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'division-liststore'},

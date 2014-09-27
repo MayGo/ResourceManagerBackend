@@ -1,1 +1,7 @@
 target/
+.settings/
+devDb.h2.db
+devDb.lock.db
+.classpath
+.project
+gravy.bat

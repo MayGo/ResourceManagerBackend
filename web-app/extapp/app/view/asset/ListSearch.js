@@ -50,7 +50,7 @@ Ext.define('ResourceManager.view.asset.ListSearch', {
 				            fieldLabel: 'Division',
 				            name:'division',
 							
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'division-liststore'},

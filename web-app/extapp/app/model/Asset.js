@@ -32,5 +32,24 @@ Ext.define('ResourceManager.model.Asset', {
 			},
 			depends: ['name']
 		}
-]
+],
+validators:{
+	name:[
+	     {type:'presence'},
+	],
+
+	validFrom:[
+	     {type:'presence'},
+	],
+
+	validTo:[
+	     {type:'presence'},
+	],
+
+	division:[
+	     {type:'presence'},
+	],
+}
 });
+
+

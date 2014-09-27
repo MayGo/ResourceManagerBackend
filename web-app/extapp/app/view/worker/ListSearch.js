@@ -41,7 +41,7 @@ Ext.define('ResourceManager.view.worker.ListSearch', {
 				            fieldLabel: 'Division',
 				            name:'division',
 							
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'division-liststore'},

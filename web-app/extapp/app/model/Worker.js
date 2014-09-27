@@ -27,5 +27,20 @@ Ext.define('ResourceManager.model.Worker', {
 			},
 			depends: ['name']
 		}
-]
+],
+validators:{
+	idCode:[
+	     {type:'presence'},
+	],
+
+	name:[
+	     {type:'presence'},
+	],
+
+	division:[
+	     {type:'presence'},
+	],
+}
 });
+
+

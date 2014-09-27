@@ -32,5 +32,24 @@ Ext.define('ResourceManager.model.Division', {
 			},
 			depends: ['name']
 		}
-]
+],
+validators:{
+	idTrail:[
+	     {type:'presence'},
+	],
+
+	name:[
+	     {type:'presence'},
+	],
+
+	nameTrail:[
+	     {type:'presence'},
+	],
+
+	headDivision:[
+	     {type:'presence'},
+	],
+}
 });
+
+

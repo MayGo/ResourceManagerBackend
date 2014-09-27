@@ -27,5 +27,28 @@ Ext.define('ResourceManager.model.Laborforce', {
 		type: ''
 	},
 
-]
+],
+validators:{
+	validFrom:[
+	     {type:'presence'},
+	],
+
+	validTo:[
+	     {type:'presence'},
+	],
+
+	asset:[
+	     {type:'presence'},
+	],
+
+	division:[
+	     {type:'presence'},
+	],
+
+	worker:[
+	     {type:'presence'},
+	],
+}
 });
+
+

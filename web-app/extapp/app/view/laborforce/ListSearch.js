@@ -43,7 +43,7 @@ Ext.define('ResourceManager.view.laborforce.ListSearch', {
 				            fieldLabel: 'Asset',
 				            name:'asset',
 							
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'asset-liststore'},
@@ -53,7 +53,7 @@ Ext.define('ResourceManager.view.laborforce.ListSearch', {
 				            fieldLabel: 'Division',
 				            name:'division',
 							
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'division-liststore'},
@@ -63,7 +63,7 @@ Ext.define('ResourceManager.view.laborforce.ListSearch', {
 				            fieldLabel: 'Worker',
 				            name:'worker',
 							
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'worker-liststore'},

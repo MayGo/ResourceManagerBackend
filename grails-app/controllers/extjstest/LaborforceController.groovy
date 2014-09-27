@@ -1,68 +1,26 @@
 package extjstest
 
 
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.rest.RestfulController
+
 
 @Transactional(readOnly = true)
-class LaborforceController {
+class LaborforceController extends RestfulController{
 
-    static responseFormats = ['json', 'xml']
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-		def results = Laborforce.list(params)
-		def totalResults = Laborforce.count()
+    static responseFormats = ['json']
+	
+	LaborforceController() {
+		super(Laborforce, false /* read-only */)
+	}
+	
+	def index(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
 		
-		def listObject = [list: results, total: totalResults]
-		respond listObject as Object, [status: OK]
-    }
-
-    @Transactional
-    def save(Laborforce laborforceInstance) {
-        if (laborforceInstance == null) {
-            render status: NOT_FOUND
-            return
-        }
-
-        laborforceInstance.validate()
-        if (laborforceInstance.hasErrors()) {
-            render status: NOT_ACCEPTABLE
-            return
-        }
-
-        laborforceInstance.save flush:true
-        respond laborforceInstance, [status: CREATED]
-    }
-
-    @Transactional
-    def update(Laborforce laborforceInstance) {
-        if (laborforceInstance == null) {
-            render status: NOT_FOUND
-            return
-        }
-
-        laborforceInstance.validate()
-        if (laborforceInstance.hasErrors()) {
-            render status: NOT_ACCEPTABLE
-            return
-        }
-
-        laborforceInstance.save flush:true
-        respond laborforceInstance, [status: OK]
-    }
-
-    @Transactional
-    def delete(Laborforce laborforceInstance) {
-
-        if (laborforceInstance == null) {
-            render status: NOT_FOUND
-            return
-        }
-
-        laborforceInstance.delete flush:true
-        render status: NO_CONTENT
-    }
+		// Parses params.query for dynamic search and uses params.offset/params.max for paging. Returns [list: results, total: results.totalCount] for paging grid.
+		// This is here so running demo works right away. Should be replaced with own service, eg: laborforceService.list(params)
+		def listObject = grails.plugin.extjsscaffolding.ExtjsScaffoldingService.parseParamsAndRetrieveListAndCount(resource, params)
+		respond listObject as Object
+	}
 }

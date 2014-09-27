@@ -18,6 +18,7 @@ Ext.define('ResourceManager.view.asset.DetailView', {
     items: [{
         xtype: 'base-form',
         reference: 'baseform',
+        modelValidation: true,
         defaults: {
             anchor: '95%',
             maxWidth: 400
@@ -25,7 +26,11 @@ Ext.define('ResourceManager.view.asset.DetailView', {
         items: [		
 			{
 	            fieldLabel: 'Name',
-	            name:'name',    
+	           // name:'name', 
+	            
+                 bind: '{theDomainObject.name}',
+         
+
 				
 			xtype : 'textfield'
 		
@@ -35,7 +40,11 @@ Ext.define('ResourceManager.view.asset.DetailView', {
 		
 			{
 	            fieldLabel: 'Valid From',
-	            name:'validFrom',    
+	           // name:'validFrom', 
+	            
+                 bind: '{theDomainObject.validFrom}',
+         
+
 				 	
 				xtype : 'datefield',
 		 		format: 'Y-m-d',
@@ -46,7 +55,11 @@ Ext.define('ResourceManager.view.asset.DetailView', {
 		
 			{
 	            fieldLabel: 'Valid To',
-	            name:'validTo',    
+	           // name:'validTo', 
+	            
+                 bind: '{theDomainObject.validTo}',
+         
+
 				 	
 				xtype : 'datefield',
 		 		format: 'Y-m-d',
@@ -57,9 +70,13 @@ Ext.define('ResourceManager.view.asset.DetailView', {
 		
 			{
 	            fieldLabel: 'Division',
-	            name:'division',    
+	           // name:'division', 
+	            
+                 bind: '{theDomainObject.division}',
+         
+
 				
-				  xtype : 'restcombo',
+				  xtype : 'combo',
 				  valueField: 'id',
   				  displayField: 'uniqueName',
 				  store: {type:'division-liststore'},
